@@ -1,5 +1,7 @@
 <template>
-  <div class="text-h4">about</div>
+  <div>
+    <div class="text-h5">Mypage/profile</div>
+  </div>
 </template>
 
 <script>
@@ -7,8 +9,3 @@ export default {};
 </script>
 
 <style lang="scss" scoped></style>
-
-<route lang="yaml">
-meta:
-  layout: about
-</route>

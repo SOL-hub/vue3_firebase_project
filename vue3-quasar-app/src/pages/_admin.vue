@@ -1,14 +1,12 @@
 <template>
-  <div class="text-h4">about</div>
+  <router-view />
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style lang="scss" scoped></style>
 
 <route lang="yaml">
 meta:
-  layout: about
+  layout: admin
 </route>
