@@ -1,16 +1,138 @@
 <template>
-  <div>
-    <div class="text-h4">게시글 상세</div>
-    <ul>
-      <li>
-        <router-link to="/posts/1/edit">수정하기</router-link>
-      </li>
-    </ul>
-  </div>
+  <q-page padding>
+    <q-card class="q-pa-lg">
+      <div class="flex">
+        <q-btn
+          icon="sym_o_arrow_back"
+          flat
+          round
+          dense
+          color="grey"
+          size="16px"
+        />
+
+        <q-space />
+        <q-btn
+          icon="sym_o_arrow_back"
+          flat
+          round
+          dense
+          color="grey"
+          size="16px"
+        />
+        <q-btn
+          icon="sym_o_favorite"
+          flat
+          round
+          dense
+          color="grey"
+          size="16px"
+        />
+        <q-btn
+          icon="sym_o_bookmark"
+          flat
+          round
+          dense
+          color="blue"
+          size="16px"
+        />
+      </div>
+
+      <div class="flex items-center">
+        <q-avatar>
+          <img src="https://cdn.quasar.dev/img/avatar.png" />
+        </q-avatar>
+        <div class="q-ml-md">
+          <div>솔</div>
+          <div class="tezt-grey-6">3일 전</div>
+        </div>
+        <q-space />
+
+        <q-btn icon="more_horiz" round flat>
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup>
+                <q-item-section>수정하기</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section>삭제하기</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
+      </div>
+
+      <div class="q-mt-md text-h5 text-weight-bold">제목입니다.</div>
+      <div class="row items-center q-gutter-x-md q-mt-md justify-end">
+        <PostIcon name="sym_o_visibility" label="1" tooltip="조회수" />
+        <PostIcon name="sym_o_sms" label="2" tooltip="댓글수" />
+        <PostIcon name="sym_o_favorite" label="3" tooltip="좋아요" />
+        <PostIcon name="sym_o_bookmark" label="4" tooltip="북마크" />
+      </div>
+
+      <q-separator class="q-my-lg" />
+
+      <!-- btns start-->
+      <!-- <div class="row items-center">
+        <div class="col-3">
+          <div class="flex flex-center">
+            <PostIcon
+              name="sym_o_visibility"
+              :label="readCount"
+              tooptip="조회수"
+            />
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="flex flex-center">
+            <PostIcon name="sym_o_sms" :label="commentCount" tooptip="댓글수" />
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="flex flex-center">
+            <q-btn class="full-width" flat dense @click.prevent>
+              <PostIcon
+                name="sym_o_favorite"
+                :label="likeCounts"
+                tooptip="좋아요"
+              />
+            </q-btn>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="flex flex-center">
+            <q-btn class="full-width" flat dense @click.prevent>
+              <PostIcon
+                name="sym_o_bookmark"
+                :label="bookmarkCount"
+                tooptip="북마크"
+              />
+            </q-btn>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- btns end -->
+      <q-separator class="q-my-lg" />
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et,
+        repudiandae? Adipisci soluta accusamus dolore, necessitatibus culpa
+        itaque officiis pariatur laboriosam, dignissimos voluptatum quam
+        reprehenderit recusandae quidem minima iste deserunt. Repudiandae.
+      </div>
+    </q-card>
+  </q-page>
 </template>
 
-<script>
-export default {};
+<script setup>
+import PostIcon from 'src/pages/components/PostIcon.vue';
 </script>
 
 <style lang="scss" scoped></style>
+
+<route lang="yaml">
+meta: width: 800px
+</route>
