@@ -13,7 +13,7 @@
         />
 
         <div class="flex justify-between">
-          <!-- <q-btn
+          <q-btn
             label="비밀번호 찾기"
             color="secondary"
             flat
@@ -28,7 +28,7 @@
             dense
             size="13px"
             @click="$emit('changeView', 'SignUpForm')"
-          /> -->
+          />
         </div>
       </div>
       <q-separator />
@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-// defineEmits(['changeView']);
+defineEmits(['changeView']);
 </script>
 
 <style lang="scss" scoped></style>

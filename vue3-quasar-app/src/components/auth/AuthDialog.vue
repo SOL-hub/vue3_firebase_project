@@ -11,7 +11,7 @@
       </q-card-section>
 
       <q-card-section class="q-px-xl q-pb-xl">
-        <!-- <SignInForm
+        <SignInForm
           v-if="viewMode === 'SignInForm'"
           @change-view="changeViewMode"
         />
@@ -19,7 +19,7 @@
           v-else-if="viewMode === 'SignUpForm'"
           @change-view="changeViewMode"
         />
-        <FindPasswordForm v-else @change-view="changeViewMode" /> -->
+        <FindPasswordForm v-else @change-view="changeViewMode" />
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -29,7 +29,7 @@
 import SignInForm from './SignInForm.vue';
 import SignUpForm from './SignUpForm.vue';
 import FindPasswordForm from './FindPasswordForm.vue';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 defineProps({
   modelValue: {
@@ -41,7 +41,7 @@ defineProps({
 defineEmits(['update:modelValue']);
 
 const viewMode = ref('SignInForm');
-// const changeViewMode = mode => (viewMode = mode);
+const changeViewMode = mode => (viewMode.value = mode);
 </script>
 
 components: { SignInForm },
