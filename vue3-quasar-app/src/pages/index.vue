@@ -1,23 +1,15 @@
 <template>
   <q-page padding>
-    <div class="text-h4">커뮤니티 목록</div>
-    <section class="q-gutter-y-sm q-mt-lg">
-      <q-list bordered separator>
-        <!-- <q-item v-for="post in posts" :key="post.id" clickable>
-          <q-item-section>{{ post.id }} - {{ post.title }}</q-item-section>
-        </q-item> -->
+    <div class="row q-gutter-x-lg">
+      <aside class="col-grow">
+        <PostLeftBar />
+      </aside>
+      <section class="col-7">
+        <PostHeader />
         <PostList :items="posts" />
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
-        quo facilis eligendi distinctio neque. Mollitia, eaque enim officiis
-        magnam aut esse voluptates maiores et quod nesciunt ipsum sunt ut
-        repellat.
-      </q-list>
-    </section>
-    <!-- <ul>
-      <li>
-        <router-link to="/posts/1">1번 게시글</router-link>
-      </li>
-    </ul> -->
+      </section>
+      <PostRightBar />
+    </div>
   </q-page>
 </template>
 
@@ -26,6 +18,9 @@ import { route } from 'quasar/wrappers';
 import { useRouter } from 'vue-router';
 
 import PostList from 'src/components/apps/post/PostList.vue';
+import PostHeader from './components/PostHeader.vue';
+import PostLeftBar from './components/PostLeftBar.vue';
+import PostRightBar from './components/PostRightBar.vue';
 
 const router = useRouter();
 const goPostDetails = id => router.push(`/posts/${id}`);
