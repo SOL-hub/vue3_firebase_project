@@ -69,6 +69,3 @@ const closeDialog = () => {
   emit('update:modelValue', false);
 };
 </script>
-
-components: { SignInForm },
-<style lang="scss" scoped></style>
