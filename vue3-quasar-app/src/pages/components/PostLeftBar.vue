@@ -2,7 +2,7 @@
   <StickySideBar>
     <q-card flat bordered>
       <q-list borderd separator>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple :active="true">
           <q-item-section>전체</q-item-section>
         </q-item>
 
@@ -18,16 +18,20 @@
 import StickySideBar from 'src/components/StickySideBar.vue';
 const categories = [
   {
-    label: 'test1',
-    value: 'value',
+    label: 'Q&A',
+    value: 'qna',
   },
   {
-    label: 'test2',
-    value: 'value',
+    label: '커뮤니티',
+    value: 'community',
   },
   {
-    label: 'test3',
-    value: 'value',
+    label: '공지사항',
+    value: 'notice',
+  },
+  {
+    label: '강의',
+    value: 'lecture',
   },
 ];
 </script>

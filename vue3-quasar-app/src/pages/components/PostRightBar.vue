@@ -54,9 +54,9 @@
 
       <q-list padding>
         <q-item v-for="tag in tags" :key="tag.name" clickable dense>
-          <q-item-section class="text-teal text-caption">{{
-            tag.name
-          }}</q-item-section>
+          <q-item-section class="text-teal text-caption"
+            >#{{ tag.name }}</q-item-section
+          >
           <q-item-section side class="text-teal text-caption">{{
             tag.count
           }}</q-item-section>

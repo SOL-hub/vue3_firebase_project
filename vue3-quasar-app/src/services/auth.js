@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   updateProfile,
 } from 'firebase/auth';
 import { auth } from 'src/boot/firebase';
@@ -45,4 +46,8 @@ export async function signInWithEmail({ email, password }) {
 
 export async function sendRasswordReset(email) {
   await sendPasswordResetEmail(auth, email);
+}
+
+export async function updateUserPassword(newPassword) {
+  await updatePassword(auth.currentUser, newPassword);
 }
