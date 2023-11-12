@@ -1,9 +1,9 @@
 <template>
   <q-page padding>
-    <div class="row q-gutter-x-lg">
-      <aside class="col-grow">
-        <PostLeftBar />
-      </aside>
+    <!-- 칼럼사이에 간격넣기 q-col-gutter-x-lg -->
+    <div class="row q-col-gutter-x-lg">
+      <!-- col-grow 나머지 모두 차지 -->
+      <PostLeftBar class="col-grow" />
       <section class="col-7">
         <PostHeader />
         <PostList :items="posts" />

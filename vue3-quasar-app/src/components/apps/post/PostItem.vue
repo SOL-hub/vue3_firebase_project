@@ -19,7 +19,7 @@
           {{ category }}
         </q-chip>
       </div>
-      <div class="text-h5 q-mt-sm">{{ title }}</div>
+      <div class="text-h6 q-mt-sm">{{ title }}</div>
       <div class="text-primary text-caption">
         <span v-for="tag in tags" :key="tag" class="q-mr-sm">#{{ tag }}</span>
       </div>

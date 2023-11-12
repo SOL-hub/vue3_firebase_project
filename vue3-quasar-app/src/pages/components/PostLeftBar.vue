@@ -2,7 +2,7 @@
   <StickySideBar>
     <q-card flat bordered>
       <q-list borderd separator>
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple :active="true">
           <q-item-section>전체</q-item-section>
         </q-item>
 
