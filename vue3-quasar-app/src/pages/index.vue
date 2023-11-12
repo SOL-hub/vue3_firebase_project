@@ -8,12 +8,14 @@
         <PostHeader />
         <PostList :items="posts" />
       </section>
-      <PostRightBar />
+      <PostRightBar class="col-3" @open-write-dialog="openWriteDialog" />
     </div>
+    <PostWriteDialog v-model="postDialog" />
   </q-page>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 import { route } from 'quasar/wrappers';
 import { useRouter } from 'vue-router';
 
@@ -21,6 +23,7 @@ import PostList from 'src/components/apps/post/PostList.vue';
 import PostHeader from './components/PostHeader.vue';
 import PostLeftBar from './components/PostLeftBar.vue';
 import PostRightBar from './components/PostRightBar.vue';
+import PostWriteDialog from 'src/components/apps/post/PostWriteDialog.vue';
 
 const router = useRouter();
 const goPostDetails = id => router.push(`/posts/${id}`);
@@ -37,6 +40,12 @@ const posts = Array.from(Array(20), (_, index) => ({
   uid: 'uid',
   category: '카테고리' + index,
 }));
+
+const postDialog = ref(false);
+
+const openWriteDialog = () => {
+  postDialog.value = true;
+};
 </script>
 
 <style lang="scss" scoped></style>
