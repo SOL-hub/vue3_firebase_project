@@ -3,7 +3,7 @@
     <div class="text-subtitle1 text-weight-bold q-mb-lg">댓글 6</div>
 
     <div v-if="isActive">
-      <q-input type="textarea" class="bg-white" outlined></q-input>
+      <q-input type="textarea" class="bg-white" outlined />
       <div class="flex justify-end q-gutter-x-sm q-mt-sm">
         <q-btn label="취소" color="dark" unelevated @click="toggleActive" />
         <q-btn label="등록" color="primary" unelevated />

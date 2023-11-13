@@ -16,18 +16,7 @@
 
 <script setup>
 import StickySideBar from 'src/components/StickySideBar.vue';
-const categories = [
-  {
-    label: 'test1',
-    value: 'value',
-  },
-  {
-    label: 'test2',
-    value: 'value',
-  },
-  {
-    label: 'test3',
-    value: 'value',
-  },
-];
+import { getCategories } from 'src/services/category';
+
+const categories = getCategories();
 </script>

@@ -29,7 +29,7 @@ const router = useRouter();
 const goPostDetails = id => router.push(`/posts/${id}`);
 
 const posts = Array.from(Array(20), (_, index) => ({
-  id: 'index',
+  id: 'A' + index,
   title: 'vue3 test' + index,
   content:
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur quo facilis eligendi distinctio neque. Mollitia, eaque enim officiis magnam aut esse voluptates maiores et quod nesciunt ipsum sunt ut',
