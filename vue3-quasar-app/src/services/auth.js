@@ -8,6 +8,7 @@ import {
   signOut,
   updateProfile,
   updatePassword,
+  updateEmail,
 } from 'firebase/auth';
 import { auth } from 'src/boot/firebase';
 
@@ -33,6 +34,7 @@ export async function signUpWithEmail({ email, password, nickname }) {
     // photoURL: `${DEFAULT_PHOTO_URL}${user.uid}`,
     photoURL: generateDefaultPhotoURL(user.uid),
   });
+
   console.log('user@ : ', user);
   sendVerificationEmail();
 }
@@ -54,10 +56,13 @@ export async function sendVerificationEmail() {
   await sendEmailVerification(auth.currentUser);
 }
 
-export async function updateUserProfile() {
-  await updateProfile(auth.currentUser);
+export async function updateUserProfile(displayName) {
+  await updateProfile(auth.currentUser, displayName);
 }
 
 export async function updateUserPassword(newPassword) {
   await updatePassword(auth.currentUser, newPassword);
+}
+export async function updateUserEmail(email) {
+  await updateEmail(auth.currentUser, email);
 }
