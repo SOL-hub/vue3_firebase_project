@@ -69,6 +69,7 @@ const form = ref({
 const handleSignInEmail = async () => {
   await signInWithEmail(form.value);
   $q.notify('로그인 성공, 환영합니다.💓');
+  $q.notify('이메일에서 인증 링크를 확인해주세요.💓');
 
   emit('closeDialog');
 };
