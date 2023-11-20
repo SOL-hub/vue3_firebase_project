@@ -6,10 +6,10 @@
       </q-toolbar>
       <q-separator />
       <PostForm
-        v-model="form.title"
         v-model:title="form.title"
         v-model:category="form.category"
         v-model:content="form.content"
+        @submit.prevent
       />
       <template #actions>
         <q-btn flat label="취소" v-close-popup />

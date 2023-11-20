@@ -22,12 +22,7 @@
         </template>
       </q-select>
       <TiptapEditor v-model="contentModel" />
-      <q-input
-        v-model="contentModel"
-        type="textarea"
-        outlined
-        placeholder="내용을 작성해주세여"
-      />
+
       <q-input
         outlined
         placeholder="태그를 작성해주세여(입력 후 엔터)"
@@ -67,6 +62,7 @@ import { ref, computed } from 'vue';
 import { getCategories } from 'src/services/category';
 import { validateRequired } from 'src/utils/validate-rules';
 import { useQuasar } from 'quasar';
+import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
 
 const props = defineProps({
   title: {
