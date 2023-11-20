@@ -9,6 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
   });
 
   const isAuthenticated = computed(() => !!user.value);
+  const uid = computed(() => user.value?.uid || null);
 
   const setUser = userData => {
     console.log('userData', userData);

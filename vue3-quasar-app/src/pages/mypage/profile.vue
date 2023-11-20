@@ -14,6 +14,7 @@
             label="저장하기"
             flat
             color="primary"
+            :loading="isLoadingProfile"
           ></q-btn> </q-card-actions
       ></q-form>
     </BaseCard>
@@ -31,6 +32,7 @@
             label="저장하기"
             flat
             color="primary"
+            :loading="isLoadingEmail"
           ></q-btn> </q-card-actions
       ></q-form>
     </BaseCard>
@@ -43,18 +45,54 @@ import { useQuasar } from 'quasar';
 import { ref, watchEffect } from 'vue';
 import { updateUserProfile, updateUserEmail } from 'src/services';
 import { useAuthStore } from 'src/stores/auth';
+import { useAsyncState } from '@vueuse/core';
 
 const authStore = useAuthStore();
 
 const displayName = ref('');
+
+const { isLoading: isLoadingEmail, execute: executeEmail } = useAsyncState(
+  updateUserEmail,
+  null,
+  {
+    immediate: false,
+    onSuccess: () => {
+      $q.notify('이메일 수정 완료');
+    },
+    onError: err => {
+      $q.notify({
+        type: 'negative',
+        message: getErrorMessage(err.code),
+      });
+    },
+  },
+);
 const email = ref('');
 
 const $q = useQuasar();
 
-const handleSubmitProfile = async () => {
-  await updateUserProfile(displayName.value);
-  $q.notify('프로필 수정 완료');
-};
+const { isLoading: isLoadingProfile, execute: executeProfile } = useAsyncState(
+  updateUserProfile,
+  null,
+  {
+    immediate: false,
+    onSuccess: () => {
+      $q.notify('프로필 수정 완료');
+    },
+    onError: err => {
+      $q.notify({
+        type: 'negative',
+        message: getErrorMessage(err.code),
+      });
+    },
+  },
+);
+
+const handleSubmitProfile = () => executeProfile(0, displayName.value);
+// const handleSubmitProfile = async () => {
+//   await updateUserProfile(displayName.value);
+//   $q.notify('프로필 수정 완료');
+// };
 
 const handleSubmitEmail = async () => {
   await updateUserEmail(email.value);

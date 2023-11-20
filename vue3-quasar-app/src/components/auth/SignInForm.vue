@@ -55,10 +55,26 @@
 import { signInWithGoogle, signInWithEmail } from 'src/services';
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
+import { useAsyncState } from '@vueuse/core';
 
 const emit = defineEmits(['changeView', 'closeDialog']);
 
 const $q = useQuasar();
+
+useAsyncState(signInWithEmail, null, {
+  immediate: false,
+  throwError: true,
+  onSuccess: () => {
+    $q.notify('환영합니다');
+    emit('closeDialog');
+  },
+  onError: err => {
+    $q.notify({
+      type: 'negative',
+      message: getErrorMessage(err.code),
+    });
+  },
+});
 
 //이메일 로그인
 const form = ref({
@@ -66,13 +82,24 @@ const form = ref({
   password: '',
 });
 
-const handleSignInEmail = async () => {
-  await signInWithEmail(form.value);
-  $q.notify('로그인 성공, 환영합니다.💓');
-  $q.notify('이메일에서 인증 링크를 확인해주세요.💓');
+const handleSignInEmail = () => execute(1000, form.value);
 
-  emit('closeDialog');
-};
+// const handleSignInEmail = async () => {
+//   try {
+//     isLoading.value = true;
+//     await signInWithEmail(form.value);
+//     $q.notify('로그인 성공, 환영합니다.💓');
+//     emit('closeDialog');
+//   } catch (err) {
+//     error.value = err;
+//     $q.notify({
+//       type: 'negative',
+//       message: getErrorMessage(err.code),
+//     });
+//   } finally {
+//     isLoading.value = false;
+//   }
+// };
 
 const handleSignInGoogle = async () => {
   await signInWithGoogle();
