@@ -10,6 +10,7 @@
         outlined
         dense
       />
+      <DisplayError :code="error?.code" />
       <div>
         <q-btn
           type="submit"
@@ -17,6 +18,7 @@
           class="full-width"
           unelevated
           color="primary"
+          :loading="isLoading"
         />
 
         <div class="flex justify-between">
@@ -55,7 +57,9 @@
 import { signInWithGoogle, signInWithEmail } from 'src/services';
 import { ref } from 'vue';
 import { useQuasar } from 'quasar';
+import DisplayError from '../DisplayError.vue';
 import { useAsyncState } from '@vueuse/core';
+import { getErrorMessage } from 'src/utils/firebase/error-message';
 
 const emit = defineEmits(['changeView', 'closeDialog']);
 
@@ -82,24 +86,24 @@ const form = ref({
   password: '',
 });
 
-const handleSignInEmail = () => execute(1000, form.value);
+// const handleSignInEmail = () => execute(1000, form.value);
 
-// const handleSignInEmail = async () => {
-//   try {
-//     isLoading.value = true;
-//     await signInWithEmail(form.value);
-//     $q.notify('로그인 성공, 환영합니다.💓');
-//     emit('closeDialog');
-//   } catch (err) {
-//     error.value = err;
-//     $q.notify({
-//       type: 'negative',
-//       message: getErrorMessage(err.code),
-//     });
-//   } finally {
-//     isLoading.value = false;
-//   }
-// };
+const handleSignInEmail = async () => {
+  try {
+    isLoading.value = true;
+    await signInWithEmail(form.value);
+    $q.notify('환영합니다 :)');
+    emit('closeDialog');
+  } catch (err) {
+    error.value = err;
+    $q.notify({
+      type: 'negative',
+      message: getErrorMessage(err.code),
+    });
+  } finally {
+    isLoading.value = false;
+  }
+};
 
 const handleSignInGoogle = async () => {
   await signInWithGoogle();
