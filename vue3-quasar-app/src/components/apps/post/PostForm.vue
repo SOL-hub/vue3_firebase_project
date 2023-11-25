@@ -5,7 +5,7 @@
         v-model="titleModel"
         outlined
         placeholder="제목"
-        hide-bottom-space=""
+        hide-bottom-space
         :rules="[validateRequired]"
       />
       <q-select
@@ -14,32 +14,31 @@
         :options="categories"
         emit-value
         map-options
-        hide-bottom-space=""
+        hide-bottom-space
         :rules="[validateRequired]"
       >
-        <template v-if="!contentModel" #selected>
+        <template v-if="!categoryModel" #selected>
           <span class="text-grey-7">카테고리를 선택하세요.</span>
         </template>
       </q-select>
       <TiptapEditor v-model="contentModel" />
-
       <q-input
         outlined
-        placeholder="태그를 작성해주세여(입력 후 엔터)"
+        placeholder="태그를 입력해주세요~! (입력 후 Enter)"
         prefix="#"
-        v-model="tagField"
         @keypress.enter.prevent="onRegistTag"
       />
       <q-chip
-        v-if="(tag, index) in tags"
+        v-for="(tag, index) in tags"
         :key="tag"
         outline
         dense
         color="teal"
         removable
         @remove="removeTag(index)"
-        >{{ tag }}</q-chip
       >
+        {{ tag }}
+      </q-chip>
     </q-card-section>
     <q-separator />
     <q-card-actions align="right">
@@ -59,9 +58,9 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useQuasar } from 'quasar';
 import { getCategories } from 'src/services/category';
 import { validateRequired } from 'src/utils/validate-rules';
-import { useQuasar } from 'quasar';
 import TiptapEditor from 'src/components/tiptap/TiptapEditor.vue';
 
 const props = defineProps({
@@ -98,20 +97,17 @@ const titleModel = computed({
   get: () => props.title,
   set: val => emit('update:title', val),
 });
-
 const categoryModel = computed({
-  get: () => props.title,
+  get: () => props.category,
   set: val => emit('update:category', val),
 });
-
 const contentModel = computed({
-  get: () => props.title,
+  get: () => props.content,
   set: val => emit('update:content', val),
 });
 
-const tagField = ref('');
 const onRegistTag = e => {
-  const tagValue = e.taget.value.replace(/ /g, '');
+  const tagValue = e.target.value.replace(/ /g, '');
   if (!tagValue) {
     return;
   }
@@ -124,12 +120,10 @@ const onRegistTag = e => {
   }
   e.target.value = '';
 };
-
-const removeTag = () => {
+const removeTag = (index) => {
   const model = [...props.tags];
   model.splice(index, 1);
   emit('update:tags', model);
-  console.log('removeTag');
 };
 
 const categories = getCategories();

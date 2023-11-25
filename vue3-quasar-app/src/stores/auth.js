@@ -30,6 +30,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   return {
     user,
+    uid,
     setUser,
     isAuthenticated,
   };

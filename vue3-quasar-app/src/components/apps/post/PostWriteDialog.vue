@@ -18,18 +18,17 @@
         v-model:content="form.content"
         v-model:tags="form.tags"
         :loading="isLoading"
-        @submit="
-          execute(1000, {
-            ...form.value,
-            uid: authStore.uid,
-          })
-        "
+        @submit="execute(1000, { ...form, uid: authStore.uid })"
       />
-      <q-separator />
     </q-card>
   </q-dialog>
 </template>
 
+<!-- <script>
+export default {
+  inheritAttrs: false,
+};
+</script> -->
 <script>
 const getInitialForm = () => ({
   title: '',
@@ -38,39 +37,36 @@ const getInitialForm = () => ({
   tags: [],
 });
 </script>
-
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { createPost } from 'src/services/posts';
 import { useAsyncState } from '@vueuse/core';
 import { useAuthStore } from 'src/stores/auth';
-import PostForm from 'src/components/apps/post/PostForm.vue';
-import { auth } from 'src/boot/firebase';
+
+import { createPost } from 'src/services';
+import PostForm from './PostForm.vue';
 
 const router = useRouter();
-const authStore = useAsyncState();
+const authStore = useAuthStore();
 const form = ref(getInitialForm());
 
 const onHide = () => {
   form.value = getInitialForm();
-  tagField.value = '';
 };
 
 const { isLoading, execute } = useAsyncState(createPost, null, {
   immediate: false,
   throwError: true,
   onSuccess: postId => {
-    console.log('postId:', postId);
+    console.log('postId: ', postId);
     router.push(`/posts/${postId}`);
   },
 });
-
 // const handleSubmit = async () => {
-//   await execute(1000, {
-//     ...form.value,
-//     uid: authStore.uid,
-//   });
+// await execute(1000, {
+//   ...form.value,
+//   uid: authStore.uid,
+// });
 // };
 </script>
 
