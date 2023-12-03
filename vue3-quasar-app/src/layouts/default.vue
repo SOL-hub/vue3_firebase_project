@@ -1,22 +1,18 @@
 <template>
-  <q-layout view="lHh Lpr lff" class="bg-grey-2">
-    <q-header bordered class="bg-white text-grey-9">
-      <!-- <q-toolbar class="justify-between" > -->
+  <q-layout view="lHh Lpr lff" class="">
+    <q-header bordered class="bg-white text-grey-9 header">
       <q-toolbar>
         <q-btn flat dense to="/">
-          <q-toolbar-title>
-            <q-avatar>
-              <img
-                src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
-              />
-            </q-avatar>
-            솔솔
-          </q-toolbar-title>
+          <q-avatar>
+            <img
+              src="../assets/icons/logo.svg"
+              alt="로고입니다. 클릭하면 메인페이지로 이동합니다."
+            />
+          </q-avatar>
         </q-btn>
 
         <q-space />
 
-        <!-- <div> -->
         <q-btn stretch flat label="Home" to="/home" />
         <q-btn
           stretch
@@ -81,8 +77,6 @@
             </q-list>
           </q-menu>
         </q-btn>
-
-        <!-- </div> -->
       </q-toolbar>
     </q-header>
 

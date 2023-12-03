@@ -15,12 +15,14 @@
     </div>
     <div class="flex items-center">
       <q-avatar>
-        <img src="https://cdn.quasar.dev/img/avatar.png" />
+        <img src="../../../../assets/icons/profile2.svg" />
       </q-avatar>
 
       <div class="q-ml-md">
-        <div>짐코딩</div>
-        <div class="text-grey-6">2일 전</div>
+        <div>테스트</div>
+        <div class="text-grey-6">
+          {{ date.formatDate(post.createdAt, 'YYYY. MM. DD HH:mm:ss') }}
+        </div>
       </div>
       <q-space />
       <q-btn icon="more_horiz" round flat>
@@ -63,8 +65,19 @@
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router';
+import { useAsyncState } from '@vueuse/core';
+import { getPost } from 'src/services';
+import { date } from 'quasar';
+
 import PostIcon from 'src/components/apps/post/PostIcon.vue';
 import BaseCard from 'src/components/base/BaseCard.vue';
+
+const route = useRoute();
+const { state: post, error } = useAsyncState(
+  () => getPost(route.params.id),
+  {},
+);
 </script>
 
 <style lang="scss" scoped></style>

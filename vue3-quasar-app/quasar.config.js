@@ -1,13 +1,3 @@
-/* eslint-env node */
-
-/*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
- */
-
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
 const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
@@ -19,6 +9,17 @@ module.exports = configure(function (/* ctx */) {
       // rawOptions: {},
       warnings: true,
       errors: true,
+
+      css: {
+        preprocessorOptions: {
+          scss: {
+            additionalData: `@import "@/assets/scss/app.scss";`,
+          },
+        },
+        modules: {
+          localsConvention: 'camelCaseOnly',
+        },
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
@@ -30,9 +31,18 @@ module.exports = configure(function (/* ctx */) {
     boot: ['firebase', 'error-handler'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
-    css: ['app.scss'],
+    // css: ['app.scss'],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "@/assets/scss/app.scss";`,
+        },
+      },
+      modules: {
+        localsConvention: 'camelCaseOnly',
+      },
+    },
 
-    // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',

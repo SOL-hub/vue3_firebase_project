@@ -39,3 +39,21 @@ export async function getPosts(params) {
   console.log(posts);
   return posts;
 }
+
+//community detail start
+export async function getPost(id) {
+  const docSnap = await getDoc(doc(db, 'posts', id));
+
+  if (!docSnap.exists()) {
+    throw new Error('No such document!');
+  }
+
+  const data = docSnap.data();
+
+  return {
+    ...data,
+    createdAt: data.createdAt?.toDate(),
+  };
+}
+
+//community detail end

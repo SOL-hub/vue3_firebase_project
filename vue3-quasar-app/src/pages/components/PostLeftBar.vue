@@ -1,5 +1,8 @@
 <template>
   <StickySideBar>
+    <p class="text-h4">
+      기능, 컴포넌트 먼저 작업하기, UI 퍼블리싱은 그 후에 진행
+    </p>
     <q-card flat bordered>
       <q-list borderd separator>
         <q-item clickable v-ripple :active="true">

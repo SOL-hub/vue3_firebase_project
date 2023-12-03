@@ -19,7 +19,7 @@
     >
       <q-card-section class="flex items-center">
         <q-avatar>
-          <img src="https://cdn.quasar.dev/img/avatar.png" />
+          <img src="../../../../assets/icons/profile2.svg" />
         </q-avatar>
         <div class="text-grey-6 q-ml-md">댓글을 작성해보세요.</div>
       </q-card-section>
