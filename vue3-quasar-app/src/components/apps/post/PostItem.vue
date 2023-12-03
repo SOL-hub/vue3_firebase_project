@@ -2,7 +2,7 @@
   <q-item class="bg-white" clickable :to="`/posts/${id}`">
     <q-item-section avatar top>
       <q-avatar>
-        <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="" />
+        <img src="../../../assets/icons/profile.svg" />
       </q-avatar>
     </q-item-section>
 
@@ -112,5 +112,3 @@ defineProps({
   },
 });
 </script>
-
-<style lang="scss" scoped></style>

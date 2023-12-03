@@ -1,17 +1,15 @@
 <template>
   <StickySideBar>
     <q-btn
-      padding="8px 12px 8px 8px"
       unelevated
       color="primary"
       text-color="white"
-      class="full-width"
+      class="full-width post-btn"
       @click="$emit('openWriteDialog')"
     >
-      <q-avatar class="q-mr-sm" color="white" text-color="primary" size="22px">
-        <q-icon name="edit" size="14px" />
-      </q-avatar>
-      <span class="text-weight-bold">새 포스트 작성하기</span>
+      <img src="../../assets/icons/pen.svg" />
+
+      <span class="text-weight-bold">새 글 작성하기</span>
     </q-btn>
     <q-card class="q-mt-md bg-grey-1" bordered flat>
       <q-card-section class="flex items-center q-pb-none">
@@ -53,8 +51,14 @@
         </q-card>
       </q-card-section>
 
-      <q-list padding>
-        <q-item v-for="tag in tags" :key="tag.name" clickable dense>
+      <q-list class="tag-wrap">
+        <q-item
+          v-for="tag in tags"
+          :key="tag.name"
+          clickable
+          dense
+          class="tag-box"
+        >
           <q-item-section class="text-teal text-caption">{{
             tag.name
           }}</q-item-section>
@@ -74,10 +78,17 @@ import StickySideBar from 'src/components/StickySideBar.vue';
 defineEmits(['openWriteDialog']);
 
 const tags = ref([
-  { name: 'test1', count: 10 },
-  { name: 'test2', count: 4 },
-  { name: 'test3', count: 2 },
+  { name: '태그1', count: 10 },
+  { name: '태그2', count: 4 },
+  { name: '태그3', count: 2 },
 ]);
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.post-btn {
+  margin: 12px auto;
+  padding: 0.5rem 0.75rem;
+
+  @include justifyPosition(center);
+}
+</style>

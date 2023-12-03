@@ -1,0 +1,62 @@
+//Breakpoint
+$breakpoint-desktop-large: 1680px;
+$breakpoint-desktop-middle: 1280px;
+$breakpoint-desktop-small: 1050px;
+
+$breakpoint-tablet-large: 1024px;
+$breakpoint-tablet-middle: 990px;
+$breakpoint-tablet-small: 768px;
+
+$breakpoint-mobile-large: 600px;
+$breakpoint-mobile-middle: 480px;
+$breakpoint-mobile-small: 320px;
+
+//responsive
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop-large) and (min-width: $breakpoint-desktop-small) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet-large) and (max-width: $breakpoint-tablet-small) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: $breakpoint-mobile-large) {
+    @content;
+  }
+}
+
+@mixin justifyPosition($jc) {
+  display: flex;
+  align-items: center;
+  justify-content: $jc;
+}
+
+@mixin defaultBtnStyle($bc, $fc) {
+  padding: 0.5rem 0.75rem !important;
+
+  border-radius: 4px !important;
+  border: 1px solid #0000001a;
+
+  background-color: $bc !important;
+  color: $fc !important;
+}
+
+@mixin defaultLayoutStyle($bl, $br, $bc) {
+  border: 1px solid $bl;
+  border-radius: $br;
+  background-color: $bc;
+}
+
+@mixin areaEllipsis($number) {
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,13 +1,9 @@
 <template>
   <q-page padding>
-    <div class="row q-col-gutter-x-lg">
-      <PostLeftBar class="col-grow" />
-      <section class="col-7">
-        <PostHeader />
-        <PostList :items="posts" />
-      </section>
-      <PostRightBar class="col-3" @open-write-dialog="openWriteDialog" />
-    </div>
+    <PostLeftBar />
+    <PostHeader />
+    <PostList :items="posts" />
+    <PostRightBar @open-write-dialog="openWriteDialog" />
     <PostWriteDialog
       :model-value="postDialog"
       @update:model-value="val => (postDialog = val)"
@@ -41,4 +37,17 @@ const openWriteDialog = () => {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.mainpage-container {
+  display: flex;
+}
+
+.center-wrap {
+  flex-direction: column;
+}
+
+.left-wrap,
+.right-wrap {
+  flex-grow: 1;
+}
+</style>

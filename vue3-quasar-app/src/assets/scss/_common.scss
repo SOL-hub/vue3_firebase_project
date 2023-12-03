@@ -1,0 +1,64 @@
+html {
+  scroll-behavior: smooth;
+
+  font-size: 1rem;
+}
+
+body,
+p,
+span,
+button,
+ul,
+ol,
+hr {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  list-style: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// base reset css start
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  background-color: #fff3f3;
+  font-family: 'SUITE-Regular', cursive;
+  font-size: 1rem;
+}
+
+button {
+  border: none;
+  outline: none;
+
+  appearance: none;
+
+  background: none;
+
+  cursor: pointer;
+}

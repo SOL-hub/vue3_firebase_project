@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center q-mb-lg">
-    <div class="text-h5">커뮤니티 목록</div>
+    <p class="text-h5">Community List</p>
+    <p></p>
     <q-space />
     <q-tabs narrow-indicator dense>
       <q-tab :rapple="false" label="최신순" name="createTime" />
