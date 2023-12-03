@@ -1,5 +1,5 @@
 <template>
-  <q-list bordered separator class="item-wrap">
+  <q-list separator class="item-wrap">
     <postItem
       v-for="item in items"
       :key="item.id"
